@@ -1,6 +1,29 @@
 <script>
+import axios from 'axios';
+
+
   export default {
+    data() {
+      return {
+        characters: null,
+        BASE_URL: 'http://127.0.0.1:8000/api',
+      }
+    },
+
+    methods: {
+      fetchCharacters() {
+        axios
+          .get(`${this.BASE_URL}/characters`)
+          .then((res) => {
+            console.log(res);
+            this.characters = res.data.results
+          })
+      }
+    },
     
+    created() {
+      this.fetchCharacters();
+    },
   }
 </script>
 
@@ -8,39 +31,15 @@
   <section class="section">
     <div class="container">
       <div class="characters-wrapper">
-        <div class="character-card">
-          <div class="character-card__header">
-            <h4>Lorem ipsum</h4>
+        <div class="character-card" v-for="character in characters" :key="character.id">
+          <div class="character-card__header" >
+            <h4>{{ character.name }}</h4>
           </div>
           <div class="character-card__body">
             <ul class="stats">
-              <li><span>Def: </span>NaN</li>
-              <li><span>Speed: </span>NaN</li>
-              <li><span>Hp: </span>NaN</li>
-            </ul>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="character-card__header">
-            <h4>Lorem ipsum</h4>
-          </div>
-          <div class="character-card__body">
-            <ul class="stats">
-              <li><span>Def: </span>NaN</li>
-              <li><span>Speed: </span>NaN</li>
-              <li><span>Hp: </span>NaN</li>
-            </ul>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="character-card__header">
-            <h4>Lorem ipsum</h4>
-          </div>
-          <div class="character-card__body">
-            <ul class="stats">
-              <li><span>Def: </span>NaN</li>
-              <li><span>Speed: </span>NaN</li>
-              <li><span>Hp: </span>NaN</li>
+              <li><span>Def: </span>{{ character.def }}</li>
+              <li><span>Speed: </span>{{ character.speed }}</li>
+              <li><span>Hp: </span>{{ character.hp }}</li>
             </ul>
           </div>
         </div>
@@ -65,6 +64,7 @@
       border-top-right-radius: 30px;
       border-top-left-radius: 30px;
       padding: 20px 10px 10px 20px;
+      text-transform: capitalize;
     }
 
     &__body {
