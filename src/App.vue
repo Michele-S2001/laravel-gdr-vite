@@ -1,18 +1,25 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
 
 export default {
   data() {
     return {
       hello: 'Hello vite'
     }
+  },
+
+  components: {
+    AppHeader
   }
 }
 
 </script>
 
 <template>
-  <h1>{{hello}}</h1>
+  <AppHeader/>
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
+@use './style/global.scss'; 
 </style>
