@@ -20,6 +20,11 @@ import store from '../../store';
           .then((res) => {
             this.character = res.data.result;
           })
+          .catch((error) => {
+            if (error.response.status === 404) {
+              this.$router.push({ name: 'not-found'});  
+            }
+          })
       }
     },
 

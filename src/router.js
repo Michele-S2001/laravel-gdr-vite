@@ -4,6 +4,7 @@ import AppHome from './pages/AppHome.vue';
 import CharactersIndex from './pages/characters/Index.vue';
 import CharacterShow from './pages/characters/Show.vue';
 import ItemsIndex from './pages/items/Index.vue';
+import NotFound from './pages/NotFound404.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/items',
       name: 'items.index',
       component: ItemsIndex
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: NotFound
     }
   ]
 });
