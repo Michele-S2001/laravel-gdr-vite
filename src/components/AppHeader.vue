@@ -9,6 +9,9 @@
           <li class="nav-link">
             <router-link :class="{ 'active' : $route.path === '/characters'}" :to="{ name: 'characters.index' }">Characters</router-link>
           </li>
+          <li class="nav-link">
+            <router-link :class="{ 'active' : $route.path === '/items'}" :to="{ name: 'items.index' }">Items</router-link>
+          </li>
         </ul>
       </nav>
     </div>
