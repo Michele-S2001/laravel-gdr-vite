@@ -16,11 +16,6 @@ body {
   box-sizing: border-box;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
 ul,
 ol,
 menu {
@@ -48,4 +43,14 @@ img {
 
 .px-10 {
   padding: 0 10px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.container-sm {
+  max-width: 900px;
+  margin: 0 auto;
 }

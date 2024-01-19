@@ -1,21 +1,20 @@
 <script>
 import axios from 'axios';
+import store from '../../store';
 
 
   export default {
     data() {
       return {
-        characters: null,
-        BASE_URL: 'http://127.0.0.1:8000/api',
+        characters: null
       }
     },
 
     methods: {
       fetchCharacters() {
         axios
-          .get(`${this.BASE_URL}/characters`)
+          .get(`${store.BASE_URL}/characters`)
           .then((res) => {
-            console.log(res);
             this.characters = res.data.results
           })
       }
@@ -41,6 +40,9 @@ import axios from 'axios';
               <li><span>Speed: </span>{{ character.speed }}</li>
               <li><span>Hp: </span>{{ character.hp }}</li>
             </ul>
+          </div>
+          <div class="character-card__footer">
+            <router-link :to="{ name: 'characters.show', params: { id: character.id } }">More</router-link>
           </div>
         </div>
       </div>
@@ -75,6 +77,11 @@ import axios from 'axios';
           margin-bottom: 10px;
         }
       }
+    }
+
+    &__footer {
+      text-align: center;
+      padding: 10px 0;
     }
   }
 }
