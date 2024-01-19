@@ -4,10 +4,10 @@
       <nav>
         <ul class="nav-links">
           <li class="nav-link">
-            <router-link :to="{ name: 'home' }">Home</router-link>
+            <router-link :class="{ 'active' : $route.path === '/'}" :to="{ name: 'home' }">Home</router-link>
           </li>
           <li class="nav-link">
-            <router-link :to="{ name: 'characters.index' }">Characters</router-link>
+            <router-link :class="{ 'active' : $route.path === '/characters'}" :to="{ name: 'characters.index' }">Characters</router-link>
           </li>
         </ul>
       </nav>
@@ -29,6 +29,17 @@
     padding: 20px 0;
     display: flex;
     gap: 20px;
+
+    .nav-link > *{
+      line-height: 30px;
+      padding: 0 10px;
+    }
   }
+}
+
+.active {
+  background-color: $black;
+  color: $grey;
+  border-radius: 5px;
 }
 </style>
