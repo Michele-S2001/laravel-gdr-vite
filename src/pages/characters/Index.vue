@@ -8,15 +8,14 @@ import store from '../../store';
       return {
         characters: null,
         listOfTypes: null,
-        filteredTypes: [],
-        indexCharactersUrl: `${store.BASE_URL}/characters` 
+        filteredTypes: [] 
       }
     },
 
     methods: {
       fetchCharacters() {
         axios
-          .get(this.indexCharactersUrl, {
+          .get(`${store.BASE_URL}/characters`, {
             params: {
               arrFilteredTypes: this.filteredTypes
             }
