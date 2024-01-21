@@ -1,9 +1,14 @@
 <script>
 import axios from 'axios';
 import store from '../../store';
+import PageLoader from '../../components/PageLoader.vue';
 
 
   export default {
+    components:{
+      PageLoader
+    },
+
     data() {
       return {
         characters: null,
@@ -42,7 +47,7 @@ import store from '../../store';
 </script>
 
 <template>
-  <div class="content-wrapper">
+  <div class="content-wrapper" v-if="characters && listOfTypes">
     <aside class="sidebar">
       <h5 class="filter-title">Filtra i personaggi</h5>
       <form class="filter-form" @submit.prevent="fetchCharacters">
@@ -78,15 +83,15 @@ import store from '../../store';
       </div>
     </section>
   </div>
+  <!-- loader in attesa della risposta dal back-end -->
+  <PageLoader v-else/>
 </template>
 
 <style lang="scss" scoped>
 @use '../../style/partials/vars' as *;
 
 .content-wrapper {
-
   display: flex;
-
   .sidebar {
     flex-basis: 300px;
     border-right: 2px solid $black;
