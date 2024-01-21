@@ -1,8 +1,13 @@
 <script>
 import axios from 'axios';
 import store from '../../store';
+import PageLoader from '../../components/PageLoader.vue';
 
   export default {
+    components: {
+      PageLoader
+    },
+
     props: {
       id: String
     },
@@ -71,6 +76,7 @@ import store from '../../store';
       </div>
     </div>
   </section>
+  <PageLoader v-else/>
 </template>
 
 <style lang="scss" scoped>
