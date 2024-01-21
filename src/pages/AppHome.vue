@@ -14,6 +14,9 @@
   overflow: hidden;
   color: $white;
   background-image: url(../../public/img/welcome-image.png);  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   display: grid;
   text-align: center;
   place-items: center;
